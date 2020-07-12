@@ -8,7 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrderItemRepository::class)
- * @ORM\Table(name="app_order_items")
+ * @ORM\Table(name="app_order_items", uniqueConstraints={
+ *        @ORM\UniqueConstraint(columns={"order_id", "code"})
+ *    })
  */
 class OrderItem
 {
@@ -20,7 +22,7 @@ class OrderItem
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=false)
+     * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank()
      */
