@@ -25,6 +25,7 @@ final class Version20200712125057 extends AbstractMigration
         $this->addSql('CREATE TABLE app_order (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, code VARCHAR(255) NOT NULL)');
         $this->addSql('CREATE TABLE app_order_items (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, order_id INTEGER DEFAULT NULL, code VARCHAR(255) NOT NULL)');
         $this->addSql('CREATE INDEX IDX_3B65BB0C8D9F6D38 ON app_order_items (order_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_3B65BB0C8D9F6D3877153098 ON app_order_items (order_id, code)');
     }
 
     public function down(Schema $schema) : void

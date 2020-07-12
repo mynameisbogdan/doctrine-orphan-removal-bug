@@ -22,7 +22,7 @@ final class Version20200712125117 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_3B65BB0C8D9F6D3877153098 ON app_order_items (order_id, code)');
+        $this->addSql('DROP INDEX UNIQ_3B65BB0C8D9F6D3877153098');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200712125117 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'sqlite', 'Migration can only be executed safely on \'sqlite\'.');
 
-        $this->addSql('DROP INDEX UNIQ_3B65BB0C8D9F6D3877153098');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_3B65BB0C8D9F6D3877153098 ON app_order_items (order_id, code)');
     }
 }
